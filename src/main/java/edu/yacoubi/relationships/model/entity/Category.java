@@ -1,4 +1,4 @@
-package edu.yacoubi.relationships.model;
+package edu.yacoubi.relationships.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
