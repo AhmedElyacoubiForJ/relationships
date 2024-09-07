@@ -6,13 +6,13 @@ import edu.yacoubi.relationships.model.entity.City;
 import java.util.List;
 
 public interface ICityService {
-    public City addCity(CityRequestDto cityRequestDto);
+    City addCity(CityRequestDto cityRequestDto);
 
-    public List<City> getCities();
+    List<City> getCities();
 
-    public City getCity(Long id);
+    City getCity(Long id);
 
-    public City updateCity(Long id, CityRequestDto cityRequestDto);
+    City updateCity(Long id, CityRequestDto cityRequestDto);
 
-    public void deleteCity(Long id);
+    void deleteCity(Long id);
 }

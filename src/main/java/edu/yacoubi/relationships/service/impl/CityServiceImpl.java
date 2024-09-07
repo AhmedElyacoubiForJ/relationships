@@ -4,6 +4,7 @@ import edu.yacoubi.relationships.model.dto.request.CityRequestDto;
 import edu.yacoubi.relationships.model.entity.City;
 import edu.yacoubi.relationships.repository.CityRepository;
 import edu.yacoubi.relationships.service.ICityService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class CityServiceImpl implements ICityService {
                 new IllegalArgumentException("City not found with id: " + id)
         );
     }
-
+    @Transactional
     @Override
     public City updateCity(Long id, CityRequestDto cityRequestDto) {
         return cityRepository.findById(id).map(city -> {
