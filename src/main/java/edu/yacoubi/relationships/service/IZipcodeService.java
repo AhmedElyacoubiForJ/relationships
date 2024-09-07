@@ -8,7 +8,7 @@ import java.util.List;
 public interface IZipcodeService {
     Zipcode addZipcode(ZipcodeRequestDto zipcodeRequestDto);
 
-    List<Zipcode> getZipcodes();
+    List<Zipcode> getAllZipcodes();
 
     Zipcode getZipcode(Long zipcodeId);
 
@@ -16,7 +16,7 @@ public interface IZipcodeService {
 
     void deleteZipcode(Long zipcodeId);
 
-    Zipcode addCityToZipcode(Long zipcodeId, Long cityId);
+    Zipcode associateCityWithZipcode(Long zipcodeId, Long cityId);
 
-    Zipcode removeCityFromZipcode(Long zipcodeId);
+    Zipcode disassociateCityFromZipcode(Long zipcodeId);
 }

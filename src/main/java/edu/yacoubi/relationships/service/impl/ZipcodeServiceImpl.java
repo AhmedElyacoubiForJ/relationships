@@ -37,7 +37,7 @@ public class ZipcodeServiceImpl implements IZipcodeService {
     }
 
     @Override
-    public List<Zipcode> getZipcodes() {
+    public List<Zipcode> getAllZipcodes() {
         return StreamSupport.stream(
                 zipcodeRepository.findAll().spliterator(),
                 false
@@ -77,7 +77,7 @@ public class ZipcodeServiceImpl implements IZipcodeService {
 
     @Transactional
     @Override
-    public Zipcode addCityToZipcode(Long zipcodeId, Long cityId) {
+    public Zipcode associateCityWithZipcode(Long zipcodeId, Long cityId) {
         Zipcode existingZipcode = getZipcode(zipcodeId);
         if (Objects.nonNull(existingZipcode.getCity())) {
             throw new IllegalArgumentException("Zipcode already has a city associated with it.");
@@ -86,9 +86,10 @@ public class ZipcodeServiceImpl implements IZipcodeService {
         existingZipcode.setCity(existingCity);
         return existingZipcode;
     }
+
     @Transactional
     @Override
-    public Zipcode removeCityFromZipcode(Long zipcodeId) {
+    public Zipcode disassociateCityFromZipcode(Long zipcodeId) {
         Zipcode existingZipcode = getZipcode(zipcodeId);
         if (Objects.isNull(existingZipcode.getCity())) {
             throw new IllegalArgumentException("Zipcode does not have a city associated with it.");

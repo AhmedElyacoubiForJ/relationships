@@ -25,34 +25,35 @@ public class CityServiceImpl implements ICityService {
     }
 
     @Override
-    public List<City> getCities() {
+    public List<City> getAllCities() {
         return StreamSupport.stream(cityRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public City getCity(Long id) {
-        log.debug("Getting city with id: {}", id);
-        return cityRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("City not found with id: " + id)
+    public City getCity(Long cityId) {
+        log.debug("Getting city with id: {}", cityId);
+        return cityRepository.findById(cityId).orElseThrow(() ->
+                new IllegalArgumentException("City not found with id: " + cityId)
         );
     }
+
     @Transactional
     @Override
-    public City updateCity(Long id, CityRequestDto cityRequestDto) {
-        return cityRepository.findById(id).map(city -> {
+    public City updateCity(Long cityId, CityRequestDto cityRequestDto) {
+        return cityRepository.findById(cityId).map(city -> {
             city.setName(cityRequestDto.getName());
             return cityRepository.save(city);
-        }).orElseThrow(() -> new IllegalArgumentException("City not found with id: " + id));
+        }).orElseThrow(() -> new IllegalArgumentException("City not found with id: " + cityId));
     }
 
     @Override
-    public void deleteCity(Long id) {
-        log.debug("Deleting city with id: {}", id);
-        boolean existsById = cityRepository.existsById(id);
+    public void deleteCity(Long cityId) {
+        log.debug("Deleting city with id: {}", cityId);
+        boolean existsById = cityRepository.existsById(cityId);
         if (!existsById) {
-            throw new IllegalArgumentException("City not found with id: " + id);
+            throw new IllegalArgumentException("City not found with id: " + cityId);
         }
-        cityRepository.deleteById(id);
+        cityRepository.deleteById(cityId);
     }
 }
