@@ -23,7 +23,7 @@ public class Author {
     private Zipcode zipcode;
 
     @ManyToMany(
-            mappedBy = "category",
+            mappedBy = "authors",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )

@@ -10,4 +10,10 @@ public class BookResponseDto {
     private String name;
     private List<String> authorNames;
     private String categoryName;
+
+    public BookResponseDto(Long id, String categoryName, List<String> authorNames) {
+        this.id = id;
+        this.categoryName = categoryName;
+        this.authorNames = authorNames;
+    }
 }

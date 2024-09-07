@@ -19,7 +19,7 @@ public class Category {
     private String name;
 
     @OneToMany(
-            mappedBy = "categories",
+            mappedBy = "category",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
