@@ -24,4 +24,8 @@ public class Category {
             fetch = FetchType.LAZY
     )
     private List<Book> books = new ArrayList<>();
+
+    public Category(String name) {
+        this.name = name;
+    }
 }

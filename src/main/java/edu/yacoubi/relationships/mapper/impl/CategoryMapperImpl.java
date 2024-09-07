@@ -27,6 +27,7 @@ public class CategoryMapperImpl implements IMapper<Category, CategoryResponseDto
 
     @Override
     public Category mapFrom(CategoryResponseDto categoryResponseDto) {
-        return null;
+        // TODO: Implement mapping from CategoryResponseDto to Category
+        return new Category();
     }
 }

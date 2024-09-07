@@ -30,6 +30,6 @@ public class BookMapperImpl implements IMapper<Book, BookResponseDto> {
     @Override
     public Book mapFrom(BookResponseDto bookResponseDto) {
         // TODO: Implement mapping from BookResponseDto to Book
-        return null;
+        return new Book();
     }
 }

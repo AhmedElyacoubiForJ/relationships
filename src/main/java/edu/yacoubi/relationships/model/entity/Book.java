@@ -1,6 +1,7 @@
 package edu.yacoubi.relationships.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

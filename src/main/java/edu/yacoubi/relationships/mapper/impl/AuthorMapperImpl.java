@@ -29,6 +29,7 @@ public class AuthorMapperImpl implements IMapper<Author, AuthorResponseDto> {
 
     @Override
     public Author mapFrom(AuthorResponseDto authorResponseDto) {
-        return null;
+        // TODO: Implement mapping from AuthorResponseDto to Author
+        return new Author();
     }
 }
