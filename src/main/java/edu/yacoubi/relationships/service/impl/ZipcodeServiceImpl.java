@@ -4,5 +4,5 @@ import edu.yacoubi.relationships.service.IZipcodeService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class IZipcodeServiceImpl implements IZipcodeService {
+public class ZipcodeServiceImpl implements IZipcodeService {
 }

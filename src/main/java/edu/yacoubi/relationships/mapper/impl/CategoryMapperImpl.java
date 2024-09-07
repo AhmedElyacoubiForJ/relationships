@@ -21,8 +21,8 @@ public class CategoryMapperImpl implements IMapper<Category, CategoryResponseDto
     }
 
     @Override
-    public List<CategoryResponseDto> mapTo(List<Category> a) {
-        return a.stream().map(this::mapTo).collect(Collectors.toList());
+    public List<CategoryResponseDto> mapTo(List<Category> categories) {
+        return categories.stream().map(this::mapTo).collect(Collectors.toList());
     }
 
     @Override
