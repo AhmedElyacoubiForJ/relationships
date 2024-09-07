@@ -7,8 +7,12 @@ import java.util.List;
 
 public interface ICityService {
     public City addCity(CityRequestDto cityRequestDto);
+
     public List<City> getCities();
+
     public City getCity(Long id);
+
     public City updateCity(Long id, CityRequestDto cityRequestDto);
+
     public void deleteCity(Long id);
 }
