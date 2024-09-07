@@ -28,4 +28,17 @@ public class Category {
     public Category(String name) {
         this.name = name;
     }
+
+    public Category(String name, List<Book> books) {
+        this.name = name;
+        this.books = books;
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
+    public void removeBook(Book book) {
+        books.remove(book);
+    }
 }
