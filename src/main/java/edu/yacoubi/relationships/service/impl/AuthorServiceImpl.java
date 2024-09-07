@@ -86,12 +86,13 @@ public class AuthorServiceImpl implements IAuthorService {
         authorRepository.deleteById(authorId);
     }
 
+    @Transactional
     @Override
     public AuthorResponseDto associateZipcodeWithAuthor(Long authorId, Long zipcodeId) {
         Author existingAuthor = getAuthor(authorId);
         Zipcode existingZipcode = zipcodeService.getZipcode(zipcodeId);
         if (Objects.nonNull(existingAuthor.getZipcode())) {
-            throw new IllegalStateException(
+            throw new RuntimeException(
                     String.format("Author with id [%d] already has a zipcode assigned", authorId)
             );
         }
@@ -99,6 +100,7 @@ public class AuthorServiceImpl implements IAuthorService {
         return mapper.mapTo(authorRepository.save(existingAuthor));
     }
 
+    @Transactional
     @Override
     public AuthorResponseDto disassociateZipcodeFromAuthor(Long authorId) {
         Author existingAuthor = getAuthor(authorId);
