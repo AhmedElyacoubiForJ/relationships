@@ -16,33 +16,35 @@ import java.util.List;
 public class CityController {
     private final ICityService cityService;
 
-    @PostMapping()
+    @PostMapping("/add")
     public ResponseEntity<City> addCity(@RequestBody final CityRequestDto cityRequestDto) {
-        return new ResponseEntity<>(cityService.addCity(cityRequestDto), HttpStatus.CREATED);
+        City addedCity = cityService.addCity(cityRequestDto);
+        return new ResponseEntity<>(addedCity, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<City> getCity(@PathVariable(name = "id") final Long id) {
-        City city = cityService.getCity(id);
-        return new ResponseEntity<>(city, HttpStatus.OK);
+        City existingCity = cityService.getCity(id);
+        return new ResponseEntity<>(existingCity, HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping("/getAll")
     public ResponseEntity<List<City>> getCities() {
         List<City> cities = cityService.getAllCities();
         return new ResponseEntity<List<City>>(cities, HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteCity(@PathVariable(name = "id") final Long id) {
         cityService.deleteCity(id);
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PatchMapping("/{id}")
+    @PostMapping("/update/{id}")
     public ResponseEntity<City> updateCity(
             @PathVariable(name = "id") final Long id,
             @RequestBody final CityRequestDto cityRequestDto) {
-        return new ResponseEntity<>(cityService.updateCity(id, cityRequestDto), HttpStatus.OK);
+        City updatedCity = cityService.updateCity(id, cityRequestDto);
+        return new ResponseEntity<>(updatedCity, HttpStatus.OK);
     }
 }
