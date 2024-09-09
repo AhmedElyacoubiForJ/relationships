@@ -4,6 +4,10 @@ import edu.yacoubi.relationships.model.dto.request.ZipcodeRequestDto;
 import edu.yacoubi.relationships.model.entity.Zipcode;
 import edu.yacoubi.relationships.service.IZipcodeService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -38,6 +42,18 @@ public class ZipcodeController {
         return new ResponseEntity<>(zipcodes, HttpStatus.OK);
     }
 
+    @Operation(
+            summary = "Delete a zipcode",
+            description = "Delete a Zipcode from the database."
+    )
+//    @ApiResponses({
+//            @ApiResponse(responseCode = "200", content = {
+//                    @Content(mediaType = "application/json",
+//                    schema = @Schema(implementation = Zipcode.class))
+//            }),
+//            @ApiResponse(responseCode = "404", description = "Zipcode not found",
+//                    content = @Content) }
+//    )
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteZipcode(@PathVariable(name = "id") final Long id) {
         zipcodeService.deleteZipcode(id);
