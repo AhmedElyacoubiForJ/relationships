@@ -48,7 +48,7 @@ public class BookController {
         return new ResponseEntity<>(bookResponseDto, HttpStatus.OK);
     }
 
-    @PutMapping("/{bookId}/authors/{authorId}")
+    @PutMapping("/associate/{bookId}/authors/{authorId}")
     public ResponseEntity<BookResponseDto> associateAuthorWithBook(
             @PathVariable final Long bookId,
             @PathVariable final Long authorId) {
@@ -56,7 +56,7 @@ public class BookController {
         return new ResponseEntity<>(bookResponseDto, HttpStatus.OK);
     }
 
-    @PutMapping("/{bookId}/authors/{authorId}")
+    @PutMapping("/disassociate/{bookId}/authors/{authorId}")
     public ResponseEntity<BookResponseDto> disassociateAuthorFromBook(
             @PathVariable final Long bookId,
             @PathVariable final Long authorId) {
@@ -64,7 +64,7 @@ public class BookController {
         return new ResponseEntity<>(bookResponseDto, HttpStatus.OK);
     }
 
-    @PutMapping("/{bookId}/categories/{categoryId}")
+    @PutMapping("/associate/{bookId}/categories/{categoryId}")
     public ResponseEntity<BookResponseDto> associateCategoryWithBook(
             @PathVariable final Long bookId,
             @PathVariable final Long categoryId) {
@@ -72,7 +72,7 @@ public class BookController {
         return new ResponseEntity<>(bookResponseDto, HttpStatus.OK);
     }
 
-    @PutMapping("/{bookId}/categories/{categoryId}")
+    @PutMapping("/disassociate/{bookId}/categories/{categoryId}")
     public ResponseEntity<BookResponseDto> disassociateCategoryFromBook(
             @PathVariable final Long bookId,
             @PathVariable final Long categoryId) {
