@@ -1,7 +1,6 @@
 package edu.yacoubi.relationships.controller;
 
 import edu.yacoubi.relationships.model.dto.request.ZipcodeRequestDto;
-import edu.yacoubi.relationships.model.entity.City;
 import edu.yacoubi.relationships.model.entity.Zipcode;
 import edu.yacoubi.relationships.service.IZipcodeService;
 import lombok.RequiredArgsConstructor;
