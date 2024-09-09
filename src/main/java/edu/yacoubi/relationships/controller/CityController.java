@@ -3,6 +3,7 @@ package edu.yacoubi.relationships.controller;
 import edu.yacoubi.relationships.model.dto.request.CityRequestDto;
 import edu.yacoubi.relationships.model.entity.City;
 import edu.yacoubi.relationships.service.ICityService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,14 @@ public class CityController {
         City addedCity = cityService.addCity(cityRequestDto);
         return new ResponseEntity<>(addedCity, HttpStatus.CREATED);
     }
-
+    @Tag(name = "get", description = "GET methods of Book APIs")
     @GetMapping("/{id}")
     public ResponseEntity<City> getCity(@PathVariable(name = "id") final Long id) {
         City existingCity = cityService.getCity(id);
         return new ResponseEntity<>(existingCity, HttpStatus.OK);
     }
 
+    @Tag(name = "get", description = "GET methods of Book APIs")
     @GetMapping()
     public ResponseEntity<List<City>> getCities() {
         List<City> cities = cityService.getAllCities();

@@ -3,6 +3,7 @@ package edu.yacoubi.relationships.controller;
 import edu.yacoubi.relationships.model.dto.request.CategoryRequestDto;
 import edu.yacoubi.relationships.model.dto.response.CategoryResponseDto;
 import edu.yacoubi.relationships.service.ICategoryService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,14 @@ public class CategoryController {
         return new ResponseEntity<>(categoryService.addCategory(categoryRequestDto), HttpStatus.CREATED);
     }
 
+    @Tag(name = "get", description = "GET methods of Book APIs")
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponseDto> getCategory(@PathVariable final Long id) {
         CategoryResponseDto category = categoryService.getCategoryDetails(id);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
+    @Tag(name = "get", description = "GET methods of Book APIs")
     @GetMapping()
     public ResponseEntity<Iterable<CategoryResponseDto>> getCategories() {
         return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.OK);

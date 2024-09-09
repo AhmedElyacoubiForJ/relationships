@@ -3,6 +3,7 @@ package edu.yacoubi.relationships.controller;
 import edu.yacoubi.relationships.model.dto.request.ZipcodeRequestDto;
 import edu.yacoubi.relationships.model.entity.Zipcode;
 import edu.yacoubi.relationships.service.IZipcodeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,14 @@ public class ZipcodeController {
         return new ResponseEntity<>(addedZipcode, HttpStatus.CREATED);
     }
 
+    @Tag(name = "get", description = "GET methods of Book APIs")
     @GetMapping("/{id}")
     public ResponseEntity<Zipcode> getZipcode(@PathVariable(name = "id") final Long id) {
         Zipcode exitingCity = zipcodeService.getZipcode(id);
         return new ResponseEntity<>(exitingCity, HttpStatus.OK);
     }
 
+    @Tag(name = "get", description = "GET methods of Book APIs")
     @GetMapping()
     public ResponseEntity<List<Zipcode>> getZipcodes() {
         List<Zipcode> zipcodes = zipcodeService.getAllZipcodes();

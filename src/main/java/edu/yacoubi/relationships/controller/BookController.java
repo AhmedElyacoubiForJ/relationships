@@ -4,6 +4,7 @@ package edu.yacoubi.relationships.controller;
 import edu.yacoubi.relationships.model.dto.request.BookRequestDto;
 import edu.yacoubi.relationships.model.dto.response.BookResponseDto;
 import edu.yacoubi.relationships.service.IBookService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,14 @@ public class BookController {
         return new ResponseEntity<>(bookService.addBook(bookData), HttpStatus.CREATED);
     }
 
+    @Tag(name = "get", description = "GET methods of Book APIs")
     @GetMapping("/{id}")
     public ResponseEntity<BookResponseDto> getBook(@PathVariable final Long id) {
         BookResponseDto bookResponseDto = bookService.getBookDetails(id);
         return new ResponseEntity<>(bookResponseDto, HttpStatus.OK);
     }
 
+    @Tag(name = "get", description = "GET methods of Book APIs")
     @GetMapping()
     public ResponseEntity<List<BookResponseDto>> getBooks() {
         List<BookResponseDto> bookResponseDtoList = bookService.getAllBooks();
