@@ -4,6 +4,7 @@ import edu.yacoubi.relationships.model.dto.request.ZipcodeRequestDto;
 import edu.yacoubi.relationships.model.entity.Zipcode;
 import edu.yacoubi.relationships.service.IZipcodeService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,7 +31,8 @@ public class ZipcodeController {
 
     @Tag(name = "get zipcode", description = "GET methods to Zipcode Endpoint")
     @GetMapping("/{id}")
-    public ResponseEntity<Zipcode> getZipcode(@PathVariable(name = "id") final Long id) {
+    public ResponseEntity<Zipcode> getZipcode(
+            @Parameter(description = "ID of zipcode to be retrieved", required = true) @PathVariable(name = "id") final Long id) {
         Zipcode exitingCity = zipcodeService.getZipcode(id);
         return new ResponseEntity<>(exitingCity, HttpStatus.OK);
     }
