@@ -23,14 +23,14 @@ public class BookController {
         return new ResponseEntity<>(bookService.addBook(bookData), HttpStatus.CREATED);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get book", description = "GET methods to Book Endpoint")
     @GetMapping("/{id}")
     public ResponseEntity<BookResponseDto> getBook(@PathVariable final Long id) {
         BookResponseDto bookResponseDto = bookService.getBookDetails(id);
         return new ResponseEntity<>(bookResponseDto, HttpStatus.OK);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get book", description = "GET methods to Book Endpoint")
     @GetMapping()
     public ResponseEntity<List<BookResponseDto>> getBooks() {
         List<BookResponseDto> bookResponseDtoList = bookService.getAllBooks();

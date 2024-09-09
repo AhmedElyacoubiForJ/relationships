@@ -22,14 +22,14 @@ public class AuthorController {
         return new ResponseEntity<>(authorService.addAuthor(authorRequestDto), HttpStatus.CREATED);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get author", description = "GET methods to Author Endpoint")
     @GetMapping("/{id}")
     public ResponseEntity<AuthorResponseDto> getAuthorDetails(@PathVariable final Long id) {
         AuthorResponseDto authorResponseDto = authorService.getAuthorDetails(id);
         return new ResponseEntity<>(authorResponseDto, HttpStatus.OK);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get author", description = "GET methods to Author Endpoint")
     @GetMapping()
     public ResponseEntity<List<AuthorResponseDto>> getAuthors() {
         List<AuthorResponseDto> authorResponseDtoList = authorService.getAllAuthors();

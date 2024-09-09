@@ -23,14 +23,14 @@ public class CategoryController {
         return new ResponseEntity<>(categoryService.addCategory(categoryRequestDto), HttpStatus.CREATED);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get category", description = "GET methods to Category Endpoint")
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponseDto> getCategory(@PathVariable final Long id) {
         CategoryResponseDto category = categoryService.getCategoryDetails(id);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get category", description = "GET methods to Category Endpoint")
     @GetMapping()
     public ResponseEntity<Iterable<CategoryResponseDto>> getCategories() {
         return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.OK);

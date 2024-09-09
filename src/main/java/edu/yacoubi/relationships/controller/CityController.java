@@ -22,14 +22,14 @@ public class CityController {
         City addedCity = cityService.addCity(cityRequestDto);
         return new ResponseEntity<>(addedCity, HttpStatus.CREATED);
     }
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get city", description = "GET methods to City Endpoint")
     @GetMapping("/{id}")
     public ResponseEntity<City> getCity(@PathVariable(name = "id") final Long id) {
         City existingCity = cityService.getCity(id);
         return new ResponseEntity<>(existingCity, HttpStatus.OK);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get city", description = "GET methods to City Endpoint")
     @GetMapping()
     public ResponseEntity<List<City>> getCities() {
         List<City> cities = cityService.getAllCities();

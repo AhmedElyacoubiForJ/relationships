@@ -23,14 +23,14 @@ public class ZipcodeController {
         return new ResponseEntity<>(addedZipcode, HttpStatus.CREATED);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get zipcode", description = "GET methods to Zipcode Endpoint")
     @GetMapping("/{id}")
     public ResponseEntity<Zipcode> getZipcode(@PathVariable(name = "id") final Long id) {
         Zipcode exitingCity = zipcodeService.getZipcode(id);
         return new ResponseEntity<>(exitingCity, HttpStatus.OK);
     }
 
-    @Tag(name = "get", description = "GET methods of Book APIs")
+    @Tag(name = "get zipcode", description = "GET methods to Zipcode Endpoint")
     @GetMapping()
     public ResponseEntity<List<Zipcode>> getZipcodes() {
         List<Zipcode> zipcodes = zipcodeService.getAllZipcodes();
