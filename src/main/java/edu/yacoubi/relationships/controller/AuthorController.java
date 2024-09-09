@@ -16,30 +16,30 @@ import java.util.List;
 public class AuthorController {
     private final IAuthorService authorService;
 
-    @PostMapping(path = "/addAuthor")
+    @PostMapping()
     public ResponseEntity<AuthorResponseDto> addAuthor(AuthorRequestDto authorRequestDto) {
         return new ResponseEntity<>(authorService.addAuthor(authorRequestDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<AuthorResponseDto> getAuthorDetails(@PathVariable final Long id) {
         AuthorResponseDto authorResponseDto = authorService.getAuthorDetails(id);
         return new ResponseEntity<>(authorResponseDto, HttpStatus.OK);
     }
 
-    @GetMapping("getAll")
+    @GetMapping()
     public ResponseEntity<List<AuthorResponseDto>> getAuthors() {
         List<AuthorResponseDto> authorResponseDtoList = authorService.getAllAuthors();
         return new ResponseEntity<>(authorResponseDtoList, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAuthor(@PathVariable final Long id) {
         authorService.deleteAuthor(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<AuthorResponseDto> updateAuthor(
             @PathVariable final Long id,
             AuthorRequestDto authorRequestDto) {

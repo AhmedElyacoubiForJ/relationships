@@ -16,31 +16,31 @@ import java.util.List;
 public class CityController {
     private final ICityService cityService;
 
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<City> addCity(@RequestBody final CityRequestDto cityRequestDto) {
         City addedCity = cityService.addCity(cityRequestDto);
         return new ResponseEntity<>(addedCity, HttpStatus.CREATED);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<City> getCity(@PathVariable(name = "id") final Long id) {
         City existingCity = cityService.getCity(id);
         return new ResponseEntity<>(existingCity, HttpStatus.OK);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping()
     public ResponseEntity<List<City>> getCities() {
         List<City> cities = cityService.getAllCities();
         return new ResponseEntity<List<City>>(cities, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCity(@PathVariable(name = "id") final Long id) {
         cityService.deleteCity(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<City> updateCity(
             @PathVariable(name = "id") final Long id,
             @RequestBody final CityRequestDto cityRequestDto) {

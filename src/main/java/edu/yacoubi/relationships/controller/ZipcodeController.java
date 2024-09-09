@@ -12,36 +12,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/zipcode")
+@RequestMapping("/zipcodes")
 @RequiredArgsConstructor
 public class ZipcodeController {
     private final IZipcodeService zipcodeService;
 
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<Zipcode> addZipcode(ZipcodeRequestDto zipcodeRequestDto) {
         Zipcode addedZipcode = zipcodeService.addZipcode(zipcodeRequestDto);
         return new ResponseEntity<>(addedZipcode, HttpStatus.CREATED);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Zipcode> getZipcode(@PathVariable(name = "id") final Long id) {
         Zipcode exitingCity = zipcodeService.getZipcode(id);
         return new ResponseEntity<>(exitingCity, HttpStatus.OK);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping()
     public ResponseEntity<List<Zipcode>> getZipcodes() {
         List<Zipcode> zipcodes = zipcodeService.getAllZipcodes();
         return new ResponseEntity<>(zipcodes, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteZipcode(@PathVariable(name = "id") final Long id) {
         zipcodeService.deleteZipcode(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Zipcode> updateZipcode(
             @PathVariable(name = "id") final Long id,
             @RequestBody final ZipcodeRequestDto zipcodeRequestDto) {
@@ -49,7 +49,7 @@ public class ZipcodeController {
         return new ResponseEntity<>(updatedZipcode, HttpStatus.OK);
     }
 
-    @PostMapping("/associate/{zipcodeId}/city/{cityId}")
+    @PutMapping("/associate/{zipcodeId}/city/{cityId}")
     public ResponseEntity<Zipcode> associateCityWithZipcode(
             @PathVariable(name = "zipcodeId") final Long zipcodeId,
             @PathVariable(name = "cityId") final Long cityId) {
@@ -57,7 +57,7 @@ public class ZipcodeController {
         return new ResponseEntity<>(associatedZipcode, HttpStatus.OK);
     }
 
-    @PostMapping("/disassociate/{zipcodeId}")
+    @PutMapping("/disassociate/{zipcodeId}")
     public ResponseEntity<Zipcode> disassociateCityFromZipcode(
             @PathVariable(name = "zipcodeId") final Long zipcodeId) {
         Zipcode disassociatedZipcode = zipcodeService.disassociateCityFromZipcode(zipcodeId);
