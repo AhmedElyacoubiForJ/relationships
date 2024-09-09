@@ -3,6 +3,7 @@ package edu.yacoubi.relationships.controller;
 import edu.yacoubi.relationships.model.dto.request.ZipcodeRequestDto;
 import edu.yacoubi.relationships.model.entity.Zipcode;
 import edu.yacoubi.relationships.service.IZipcodeService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -43,6 +44,10 @@ public class ZipcodeController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @Operation(
+            summary = "Update a zipcode",
+            description = "Update an existing zipcode. The response is updated Zipcode object."
+    )
     @PutMapping("/{id}")
     public ResponseEntity<Zipcode> updateZipcode(
             @PathVariable(name = "id") final Long id,
